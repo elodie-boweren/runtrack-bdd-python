@@ -1,4 +1,6 @@
 import mysql.connector
+import os
+from dotenv import load_dotenv
 import tkinter as tk
 from tkinter import ttk
 
@@ -6,9 +8,12 @@ from tkinter import ttk
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Ecole2024!",
+    password=os.getenv("password"),
     database="Store"
 )
+
+load_dotenv()
+
 cursor = mydb.cursor()
 
 # Fonction pour afficher les produits

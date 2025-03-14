@@ -1,12 +1,15 @@
 import mysql.connector
-from datetime import datetime
+import os
+from dotenv import load_dotenv
 
 mydb = mysql.connector.connect(
     host = 'localhost',
     user = 'root',
-    password = 'Ecole2024!',
+    password = os.getenv("password"),
     database = 'zoo'
 )
+
+load_dotenv()
 
 if mydb.is_connected():
     db_info = mydb.get_server_info()

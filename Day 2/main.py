@@ -1,5 +1,6 @@
 import mysql.connector
 import os
+from dotenv import load_dotenv
 
 # def load_env(file_path):
 #     with open(file_path) as file:
@@ -13,9 +14,11 @@ import os
 mydb = mysql.connector.connect(
     host = 'localhost',
     user = 'root',
-    password = 'Ecole2024!',
+    password = os.getenv("password"),
     database = 'laplateforme',
 )
+
+load_dotenv()
 
 if mydb.is_connected():
     db_info = mydb.get_server_info()
